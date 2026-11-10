@@ -62,6 +62,10 @@ for (const [index, item] of comments.entries()) {
       redirect: "manual",
     });
 
+    if (response.status === 419 || response.status === 401) {
+      throw new Error("Sesja Testmo wygasla lub jest nieprawidlowa");
+    }
+
     if (!response.ok) {
       throw new Error(`HTTP ${response.status}`);
     }
