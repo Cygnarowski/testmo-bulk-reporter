@@ -31,18 +31,19 @@ Make sure you have installed:
 - access to a Testmo instance
 - valid Testmo session cookies and CSRF token
 
-## Backend setup
+## Setup
 
 ### Clone the Repository
-
+```
 - git clone https://github.com/cygnarowski/testmo-bulk-reporter.git
 - cd testmo-bulk-reporter
+```
 
 No additional npm packages are required.
 
 ## Configuration
 
-### Create a .env file in the project root:
+### Create a ```.env``` file in the project root:
 ```
 TESTMO_URL=https://your-instance.testmo.net
 
@@ -58,11 +59,11 @@ TESTMO_CSRF_TOKEN=your_csrf_token
 ```
 Use the cookie names and values from your authenticated Testmo session.
 
-Important: Never commit your .env file or authentication credentials to GitHub.
+Important: Never commit your ```.env``` file or authentication credentials to GitHub.
 
 ## Input Data
 
-Create a comments.json file with the following structure:
+Create a ```comments.json``` file with the following structure:
 ```
 [
   {
