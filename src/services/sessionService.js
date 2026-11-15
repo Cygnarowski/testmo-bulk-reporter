@@ -1,4 +1,5 @@
 import { testmoPost } from "../api/testmoClient.js";
+import { writeFile } from "node:fs/promises";
 
 export async function addSessions(
   sessionId,
@@ -8,6 +9,7 @@ export async function addSessions(
 ) {
   const createEndpointId = 1;
   const path = `/sessions/create/${encodeURIComponent(createEndpointId)}`;
+  const createdSessions = [];
   let success = 0;
   let failed = 0;
 
@@ -29,6 +31,17 @@ export async function addSessions(
     try {
       const response = await testmoPost(path, body);
       console.log("Zadanie zakonczone:", response.status);
+      const result = await response.json();
+      createdSessions.push({
+        id: result.id,
+        name: result.name,
+      });
+      await writeFile(
+        "./src/data/created-sessions.json",
+        JSON.stringify(createdSessions, null, 2),
+        "utf-8",
+      );
+      console.log("Zapisano do pliku: created-sessions.json");
       success++;
       console.log(`[${index + 1}/${sessions.length}] OK: ${item.name}`);
     } catch (error) {
