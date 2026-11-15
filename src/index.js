@@ -1,6 +1,8 @@
 import { readFile } from "node:fs/promises";
 import { loadEnvFile } from "node:process";
 import { addComments } from "./services/commentService.js";
+import { addSessions } from "./services/sessionService.js";
+
 loadEnvFile(".env");
 
 const command = process.argv[2];
@@ -12,6 +14,8 @@ const {
   TESTMO_REMEMBER_WEB_VALUE,
   TESTMO_CSRF_TOKEN,
   TESTMO_SESSION,
+  TESTMO_MILESTONE_ID,
+  TESTMO_TEMPLATE_ID,
 } = process.env;
 
 if (
@@ -20,7 +24,9 @@ if (
   !TESTMO_REMEMBER_WEB_KEY ||
   !TESTMO_REMEMBER_WEB_VALUE ||
   !TESTMO_CSRF_TOKEN ||
-  !TESTMO_SESSION
+  !TESTMO_SESSION ||
+  !TESTMO_MILESTONE_ID ||
+  !TESTMO_TEMPLATE_ID
 ) {
   throw new Error("Brak wymaganej konfiguracji w .env");
 }
@@ -38,9 +44,17 @@ switch (command) {
     break;
   }
   case "sessions": {
-    console.log("TODO: Obsluga sesji do implementacji");
+    const sessions = JSON.parse(
+      await readFile("./src/data/sessions.json", "utf8"),
+    );
+    await addSessions(
+      TESTMO_SESSION_ID,
+      sessions,
+      TESTMO_MILESTONE_ID,
+      TESTMO_TEMPLATE_ID,
+    );
     break;
   }
   default:
-    console.log("Dostepne komendy: comments");
+    console.log("Dostepne komendy: comments, sessions");
 }
