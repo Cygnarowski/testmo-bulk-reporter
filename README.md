@@ -61,6 +61,10 @@ Make sure you have installed:
  cd testmo-bulk-reporter
 ```
 
+### Install Dependecies
+```
+npm install
+```
 No additional npm packages are required.
 
 ## Configuration
