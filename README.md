@@ -31,6 +31,7 @@ testmo-bulk-reporter/
 │   │   └── testmoClient.js
 │   ├── services/
 │   │   ├── commentService.js
+│   │   ├── commonService.js
 │   │   └── sessionService.js
 │   ├── data/
 │   │   ├── comments.json
@@ -132,13 +133,11 @@ Each object represents one test result comment to be added to the specified Test
 ```
 
 
-
-
 ## How it works: 
 
 ### Session Creation: 
 ```
- npm start -- sessions
+ npm start sessions
 ```
 
 The script reads sessions.json and sends one POST request per session.
@@ -169,7 +168,7 @@ Example ``` created-sessions.json```
 ### Comment Import: 
 
 ```
- npm start -- comments
+ npm start comments
 ```
 
 The script reads comments.json and sends one POST request per comment.
@@ -202,6 +201,19 @@ Import completed
 Success: 3
 Errors: 0
 ```
+### Session creation and comments to that session: 
+```
+ npm start combo
+```
+
+The command combines the session creation and comment import processes described above.
+
+1. The command combines the session creation and comment import processes described above.
+2. Creates a session using data from sessions.json.
+3. Retrieves the newly created session ID.
+4. Imports comments from comments.json into the created session.
+5. Displays the progress and results of both operations.
+
 
 ## Important Notes: 
 
