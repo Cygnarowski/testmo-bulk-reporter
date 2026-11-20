@@ -8,7 +8,7 @@ export async function addComments(sessionId, comments) {
   for (const [index, item] of comments.entries()) {
     const body = {
       comment: item.comment,
-      status_id: 4,
+      status_id: null,
       elapsed: "",
       attachments: [],
       issue: [],

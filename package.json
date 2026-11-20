@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/index.js"
+    "start": "node src/index.js",
+    "comments": "node src/index.js -- comments",
+    "sessions": "node src/index.js -- sessions",
+    "combo": "node src/index.js -- combo"
   },
   "repository": {
     "type": "git",

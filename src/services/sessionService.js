@@ -1,12 +1,7 @@
 import { testmoPost } from "../api/testmoClient.js";
 import { writeFile } from "node:fs/promises";
 
-export async function addSessions(
-  sessionId,
-  sessions,
-  milestoneId,
-  testmoTemplateId,
-) {
+export async function addSessions(sessions, milestoneId, testmoTemplateId) {
   const createEndpointId = 1;
   const path = `/sessions/create/${encodeURIComponent(createEndpointId)}`;
   const createdSessions = [];
@@ -44,6 +39,7 @@ export async function addSessions(
       console.log("Zapisano do pliku: created-sessions.json");
       success++;
       console.log(`[${index + 1}/${sessions.length}] OK: ${item.name}`);
+      return createdSessions;
     } catch (error) {
       failed++;
       console.error(
