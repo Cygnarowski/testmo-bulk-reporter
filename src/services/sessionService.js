@@ -8,7 +8,7 @@ export async function addSessions(sessions, milestoneId, testmoTemplateId) {
   let success = 0;
   let failed = 0;
 
-  for (const [index, item] of sessions.entries()) {
+  for (const [index, session] of sessions.entries()) {
     const body = {
       assignee_id: null,
       attachments: [],
@@ -17,7 +17,7 @@ export async function addSessions(sessions, milestoneId, testmoTemplateId) {
       estimate: "",
       issues: [],
       milestone_id: Number(milestoneId),
-      name: item.name,
+      name: session.name,
       state_id: 11,
       tags: [],
       template_id: Number(testmoTemplateId),
@@ -38,7 +38,7 @@ export async function addSessions(sessions, milestoneId, testmoTemplateId) {
       );
       console.log("Zapisano do pliku: created-sessions.json");
       success++;
-      console.log(`[${index + 1}/${sessions.length}] OK: ${item.name}`);
+      console.log(`[${index + 1}/${sessions.length}] OK: ${session.name}`);
     } catch (error) {
       failed++;
       console.error(

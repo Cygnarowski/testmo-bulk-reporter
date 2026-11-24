@@ -5,9 +5,9 @@ export async function addComments(sessionId, comments) {
   let success = 0;
   let failed = 0;
 
-  for (const [index, item] of comments.entries()) {
+  for (const [index, comment] of comments.entries()) {
     const body = {
-      comment: item.comment,
+      comment: comment.comment,
       status_id: null,
       elapsed: "",
       attachments: [],
@@ -18,7 +18,7 @@ export async function addComments(sessionId, comments) {
       const response = await testmoPost(path, body);
       console.log("Zadanie zakonczone:", response.status);
       success++;
-      console.log(`[${index + 1}/${comments.length}] OK: ${item.comment}`);
+      console.log(`[${index + 1}/${comments.length}] OK: ${comment.comment}`);
     } catch (error) {
       failed++;
       console.error(
