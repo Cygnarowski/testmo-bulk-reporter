@@ -209,7 +209,7 @@ Errors: 0
 The command combines the session creation and comment import processes described above.
 
 1. The command combines the session creation and comment import processes described above.
-2. Creates a session using data from sessions.json.
+2. Creates only one session using data from sessions.json.
 3. Retrieves the newly created session ID.
 4. Imports comments from comments.json into the created session.
 5. Displays the progress and results of both operations.
