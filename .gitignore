@@ -6,3 +6,9 @@ node_modules/
 
 #VSC
 .vscode/
+
+
+#data
+src/data/sessions.json
+src/data/comments.json
+src/data/created-sessions.json
