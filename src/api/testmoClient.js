@@ -26,6 +26,7 @@ export async function testmoPost(path, body) {
     },
     body: JSON.stringify(body),
     redirect: "manual",
+    signal: AbortSignal.timeout(30_000),
   });
 
   if (response.status === 419 || response.status === 401) {
