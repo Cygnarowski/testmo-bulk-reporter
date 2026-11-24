@@ -39,7 +39,6 @@ export async function addSessions(sessions, milestoneId, testmoTemplateId) {
       console.log("Zapisano do pliku: created-sessions.json");
       success++;
       console.log(`[${index + 1}/${sessions.length}] OK: ${item.name}`);
-      return createdSessions;
     } catch (error) {
       failed++;
       console.error(
@@ -47,8 +46,12 @@ export async function addSessions(sessions, milestoneId, testmoTemplateId) {
       );
     }
   }
-  console.log("\nImport zakonczony");
+
+  for (const createdSession of createdSessions) {
+    console.log("Import zakonczony. Wygenerowano sesje nr:", createdSession.id);
+  }
   console.log(`OK: ${success}`);
   console.log(`ERROR: ${failed}`);
   if (failed > 0) process.exitCode = 1;
+  return createdSessions;
 }

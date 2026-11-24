@@ -26,7 +26,10 @@ export async function addComments(sessionId, comments) {
       );
     }
   }
-  console.log("\nImport zakonczony");
+  console.log(
+    "\nImport zakonczony. Wygenerowano komentarze dla sesji nr:",
+    sessionId,
+  );
   console.log(`OK: ${success}`);
   console.log(`ERROR: ${failed}`);
 

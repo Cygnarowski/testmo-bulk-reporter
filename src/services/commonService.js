@@ -15,7 +15,10 @@ export async function addSessionAndComments(
   if (!sessionCreated.length) {
     throw new Error("No created sessions found");
   }
-  console.log(sessionCreated[0].id);
+  console.log(
+    "Komentarze beda wygenerowane do sesji nr:",
+    sessionCreated[0].id,
+  );
   const sessionId = sessionCreated[0].id;
   await addComments(sessionId, comments);
 }
